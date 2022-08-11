@@ -1,4 +1,4 @@
-# blackmarket
+# daiwik-blackmarket
 
     Reputation based Black Market For QB-Core
 
@@ -17,7 +17,7 @@
     Giving Reputation to a Player:
 
     Client:
-    TriggerEvent('blackmarket:AddReputation', 0-100)    ~ The Maximum Reputation a Player can earn is 100.
+    TriggerEvent('daiwik-blackmarket:AddReputation', 0-100)    ~ The Maximum Reputation a Player can earn is 100.
 
 # Adding Items to the Black Market
 
