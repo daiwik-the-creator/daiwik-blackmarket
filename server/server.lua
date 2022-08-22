@@ -24,17 +24,16 @@ AddEventHandler('daiwik-blackmarket:Server:SearchReputation', function()
 end)
 
 
-RegisterServerEvent('daiwik-blackmarket:Server:UpdateReputation')
-AddEventHandler('daiwik-blackmarket:Server:UpdateReputation', function(data)
+RegisterServerEvent('daiwik-blackmarket:Server:UpdateReputation', function(data)
     local src           = source
 	local Player        = QBCore.Functions.GetPlayer(src)
     local cid           = Player.PlayerData.citizenid
 	local rep	        = data
 
 	if Player ~= nil then
-		MySQL.update("UPDATE daiwik-blackmarket SET rep=@rep WHERE cid=@cid", {
-			['@cid']	= cid,
-			['@rep']	= rep
+		MySQL.update("UPDATE daiwik_blackmarket SET rep=@rep WHERE cid=@cid", {
+			['@cid'] = cid,
+			['@rep'] = rep
 		})
 	end
 end)
