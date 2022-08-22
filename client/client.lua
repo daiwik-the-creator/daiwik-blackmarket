@@ -91,7 +91,7 @@ end)
 RegisterNetEvent('daiwik-blackmarket:CheckReputation', function()
     TriggerServerEvent('daiwik-blackmarket:Server:SearchReputation')
     Wait(100)
-    if     playerReputation <= 0   then StreetRank = "Unknown" 
+    if playerReputation <= 0 then StreetRank = "Unknown" 
     elseif playerReputation <= 10  then StreetRank = "Newbie"
     elseif playerReputation <= 25  then StreetRank = "Amateur"
     elseif playerReputation <= 50  then StreetRank = "Hustler"
@@ -335,6 +335,7 @@ RegisterNetEvent('daiwik-blackmarket:Client:EndTrade', function(Completed)
     if TradeinProgress then
         TradeinProgress = false
         if Completed then 
+            -- TriggerEvent('blackmarket:AddReputation', 1) -- Incase, you want to add 1 rep at each trade.
             QBCore.Functions.Notify(("Trade Successful."), "success")
         else
             QBCore.Functions.Notify(("Trade Cancelled."), "error")
