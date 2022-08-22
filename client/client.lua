@@ -1,9 +1,16 @@
 playerReputation = nil
 TradeinProgress = false
 
--- RegisterCommand('checkrep', function()
+-- RegisterCommand('checkrep', function() -- Command to check rep.
 -- 	print(playerReputation)
 -- end)
+
+-- RegisterCommand('rep', function() -- Command to test adding rep.
+--     print(PlayerId())
+--     TriggerEvent('daiwik-blackmarket:AddReputation', 1) 
+-- end)
+
+TriggerServerEvent('daiwik-blackmarket:Server:SearchReputation')
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     player = PlayerPedId()
@@ -76,8 +83,7 @@ AddEventHandler('daiwik-blackmarket:Client:UpdateReputation', function(reputatio
 end)
 
 
-RegisterNetEvent('daiwik-blackmarket:AddReputation')
-AddEventHandler('daiwik-blackmarket:AddReputation', function(reputation)
+RegisterNetEvent('daiwik-blackmarket:AddReputation', function(reputation)
 	playerReputation = playerReputation + reputation
 	if playerReputation < 0 then
 		playerReputation = 0
@@ -335,7 +341,7 @@ RegisterNetEvent('daiwik-blackmarket:Client:EndTrade', function(Completed)
     if TradeinProgress then
         TradeinProgress = false
         if Completed then 
-            -- TriggerEvent('blackmarket:AddReputation', 1) -- Incase, you want to add 1 rep at each trade.
+            TriggerEvent('blackmarket:AddReputation', 1) -- Incase, you want to add 1 rep at each trade.
             QBCore.Functions.Notify(("Trade Successful."), "success")
         else
             QBCore.Functions.Notify(("Trade Cancelled."), "error")
